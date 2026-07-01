@@ -75,3 +75,11 @@ curl -X POST http://localhost:8000/predict \
 ```bash
 pytest -v
 ```
+
+
+## Possible improvements
+
+- Replace the inline training data with a real dataset (e.g. a public
+  sentiment corpus) loaded from file.
+- Try stronger models (TF-IDF + logistic regression as a baseline; a
+  fine-tuned transformer such as DistilBERT for production-grade accuracy).
