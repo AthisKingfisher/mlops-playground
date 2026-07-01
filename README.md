@@ -54,7 +54,6 @@ docker start levl-api       # start it again
 docker rm -f levl-api       # stop and remove it
 ```
 
-
 ## Example
 
 ```bash
