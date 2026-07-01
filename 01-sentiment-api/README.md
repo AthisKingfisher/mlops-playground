@@ -1,4 +1,4 @@
-# Levl — Text Classifier API
+# Sentiment API
 
 A minimal NLP microservice that classifies text sentiment, built to
 demonstrate clean API design, testing, containerization, and CI/CD.
@@ -37,21 +37,21 @@ docker ps
 
 Build image using Docker
 ```bash
-docker build -t levl:0.1.0 .
+docker build -t sentiment-api:0.1.0 .
 ```
 
 Run image
 ```bash
-docker run -d -p 8000:8000 --name levl-api levl:0.1.0
+docker run -d -p 8000:8000 --name sentiment-api sentiment-api:0.1.0
 ```
 
 Then open http://localhost:8000/docs for the interactive API.
 
 Stop and Restart
 ```bash
-docker stop levl-api        # stop it
-docker start levl-api       # start it again
-docker rm -f levl-api       # stop and remove it
+docker stop sentiment-api        # stop it
+docker start sentiment-api       # start it again
+docker rm -f sentiment-api       # stop and remove it
 ```
 
 ## Example

@@ -5,7 +5,7 @@ from pydantic import BaseModel, Field
 from app.classifier import SentimentClassifier
 
 app = FastAPI(
-    title="Levl - Text Classifier API",
+    title="Sentiment API",
     description="A minimal NLP service: classify text sentiment.",
     version="0.1.0",
 )

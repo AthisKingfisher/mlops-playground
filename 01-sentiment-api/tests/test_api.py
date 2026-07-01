@@ -1,4 +1,4 @@
-"""API tests for the Levl text-classifier service.
+"""API tests for the Sentiment API service.
 
 Uses FastAPI's TestClient, which runs the app in-process - no server
 needed, no network. Fast and deterministic, which is what CI wants.
