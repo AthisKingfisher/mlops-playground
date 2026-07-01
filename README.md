@@ -12,7 +12,7 @@ demonstrate clean API design, testing, containerization, and CI/CD.
 - **scikit-learn** — Naive Bayes sentiment classifier
 - **Pydantic** — request/response validation
 - **pytest** — automated tests (happy path + input validation)
-- **Docker** — containerized for reproducible deployment *(coming)*
+- **Docker** — containerized for reproducible deployment
 - **GitHub Actions** — automated lint/test/build pipeline *(coming)*
 
 ## Running locally
@@ -25,6 +25,35 @@ uvicorn app.main:app --reload --port 8000
 ```
 
 Then open http://localhost:8000/docs for the interactive API.
+
+
+## Running on Docker
+
+Start Docker daemon and confirm it's running
+```bash
+sudo service docker start
+docker ps
+```
+
+Build image using Docker
+```bash
+docker build -t levl:0.1.0 .
+```
+
+Run image
+```bash
+docker run -d -p 8000:8000 --name levl-api levl:0.1.0
+```
+
+Then open http://localhost:8000/docs for the interactive API.
+
+Stop and Restart
+```bash
+docker stop levl-api        # stop it
+docker start levl-api       # start it again
+docker rm -f levl-api       # stop and remove it
+```
+
 
 ## Example
 
