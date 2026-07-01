@@ -23,11 +23,11 @@ jobs:
     steps:
       # 1. Get the code onto the runner.
       - name: Check out repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       # 2. Install Python.
       - name: Set up Python
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@v6
         with:
           python-version: "3.12"
 
@@ -56,7 +56,7 @@ jobs:
 
     steps:
       - name: Check out repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       # Build the image to prove the Dockerfile is valid.
       # We don't push it anywhere yet - just verify it builds.
