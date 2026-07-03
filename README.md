@@ -9,7 +9,7 @@ one layer of the deployment stack.
 | # | Project | Focus | Status |
 |---|---------|-------|--------|
 | 01 | [Sentiment API](./01-sentiment-api) | FastAPI · Docker · pytest · CI/CD | ✅ |
-| 02 | Kubernetes Deploy | k3d · manifests · automated deploy | 🚧 |
+| 02 | Kubernetes Deploy | k3d · manifests · automated deploy | ✅ |
 | 03 | Skill Extractor | BERT · NLP · entity extraction | 📋 |
 
 Built by André Aguiar ([@AthisKingfisher](https://github.com/AthisKingfisher)).
