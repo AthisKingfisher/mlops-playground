@@ -1,0 +1,26 @@
+canonical,aliases,type
+Python,py|python3,hard
+JavaScript,js|ecmascript,hard
+Java,,hard
+PostgreSQL,postgres|postgresql|psql,hard
+MySQL,,hard
+MongoDB,mongo,hard
+Docker,,hard
+Kubernetes,k8s|kube,hard
+FastAPI,,hard
+Flask,,hard
+Django,,hard
+REST API,rest|rest apis|restful,hard
+Machine Learning,ml,hard
+Deep Learning,dl,hard
+scikit-learn,sklearn|scikit learn,hard
+PyTorch,torch,hard
+TensorFlow,tf,hard
+SQL,,hard
+Git,,hard
+CI/CD,cicd|ci cd,hard
+Communication,,soft
+Teamwork,team work|collaboration,soft
+Problem Solving,problem-solving,soft
+Leadership,,soft
+Adaptability,,soft
