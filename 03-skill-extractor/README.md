@@ -88,6 +88,62 @@ docker start skill-extractor       # start it again
 docker rm -f skill-extractor       # stop and remove it
 ```
 
+## Kubernetes
+
+Deployed to a local [k3d](https://k3d.io) cluster, running **alongside** the
+sentiment-api service (project 01) in the same cluster. Manifests live in
+[`k8s/`](./k8s): a Deployment, a Service, and an Ingress.
+
+### Path-based routing
+
+Because two services share one cluster and one ingress entry point, they can't
+both own `/`. Traffic is split by URL path:
+
+- `localhost:8080/skills/...` → skill-extractor
+- `localhost:8080/...`        → sentiment-api
+
+The app itself serves `/extract` and `/health` (it knows nothing about the
+`/skills` prefix). A **Traefik middleware** strips the `/skills` prefix before
+forwarding, so `localhost:8080/skills/extract` reaches the app as `/extract`.
+
+Request flow:
+
+```
+browser → /skills/extract → Ingress (matches /skills) → Middleware (strips /skills) → Service → Pod → /extract
+```
+
+### Deploy
+
+```bash
+# 1. Build the image and import it into the cluster
+#    (k3d can't see local Docker images by default)
+docker build -t skill-extractor:0.1.0 .
+k3d image import skill-extractor:0.1.0 -c playground
+
+# 2. Apply the manifests
+kubectl apply -f k8s/deployment.yaml
+kubectl apply -f k8s/service.yaml
+kubectl apply -f k8s/ingress.yaml
+
+# 3. Confirm the pod is running
+kubectl get pods -l app=skill-extractor
+```
+
+### Test it
+
+```bash
+curl http://localhost:8080/skills/health
+curl -X POST http://localhost:8080/skills/extract \
+  -H "Content-Type: application/json" \
+  -d '{"text": "Python developer with Docker and Kubernetes"}'
+```
+
+### Notes
+
+- Fast startup (no model to load), so a `startupProbe` isn't needed — liveness
+  and readiness probes are sufficient. A `startupProbe` would matter for a
+  slow-loading service (e.g. one loading a large ML model).
+
 
 ## Known limitations
 
@@ -113,4 +169,3 @@ These are evaluated trade-offs, not oversights:
 - Swap the curated list for the full **ESCO** skills taxonomy.
 - Optional transformer model as a *supplementary* "candidate skills" detector
   for terms outside the gazetteer.
-- Deploy to Kubernetes.
