@@ -61,6 +61,34 @@ uvicorn app.main:app --reload --port 8000
 
 Open http://localhost:8000/docs for the interactive API.
 
+## Running on Docker
+
+Start Docker daemon and confirm it's running
+```bash
+sudo service docker start
+docker ps
+```
+
+Build image using Docker
+```bash
+docker build -t skill-extractor:0.1.0 .
+```
+
+Run image
+```bash
+docker run -d -p 8000:8000 --name skill-extractor skill-extractor:0.1.0
+```
+
+Then open http://localhost:8000/docs for the interactive API.
+
+Stop and Restart
+```bash
+docker stop skill-extractor        # stop it
+docker start skill-extractor       # start it again
+docker rm -f skill-extractor       # stop and remove it
+```
+
+
 ## Known limitations
 
 These are evaluated trade-offs, not oversights:
@@ -85,4 +113,4 @@ These are evaluated trade-offs, not oversights:
 - Swap the curated list for the full **ESCO** skills taxonomy.
 - Optional transformer model as a *supplementary* "candidate skills" detector
   for terms outside the gazetteer.
-- Containerize and deploy to Kubernetes (with a `startupProbe`).
+- Deploy to Kubernetes.

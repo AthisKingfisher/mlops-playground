@@ -10,6 +10,6 @@ one layer of the deployment stack.
 |---|---------|-------|--------|
 | 01 | [Sentiment API](./01-sentiment-api) | FastAPI · Docker · pytest · CI/CD | ✅ |
 | 02 | [Kubernetes Deploy](./02-k8s-deploy) | k3d · Deployment · Service · Ingress · probes | ✅ |
-| 03 | Skill Extractor | BERT · NLP · entity extraction | 📋 |
+| 03 | [Skill Extractor](./03-skill-extractor) | BERT · NLP · entity extraction | ✅ |
 
 Built by André Aguiar ([@AthisKingfisher](https://github.com/AthisKingfisher)).
